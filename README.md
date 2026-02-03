@@ -2,10 +2,6 @@ Let's Go
 
 ---
 
-Demo  : 
-
-<img width="817" height="795" alt="image" src="https://github.com/user-attachments/assets/c476cb8c-2635-41bf-9833-2d07e0b04039" />
-
 ---
 
 ### 1. Initial Setup
@@ -45,7 +41,7 @@ Demo  :
 - **Clone your GitHub repo**
 
   ```bash
-  git clone https://github.com/d-hackmt/flipkart-product-chatbot.git
+  git clone https://github.com/Sambit2424/Ecommerce-Product-Recommendation-Chatbot.git
   ls
   cd TESTING-9
   ls  # You should see the contents of your project
