@@ -1,0 +1,87 @@
+Error 1
+(prodrecbot) C:\ai_projects\ecommerce_product_recommender_chatbot_gcp>python flipkart\data_ingestion.py
+Traceback (most recent call last):
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\flipkart\data_ingestion.py", line 4, in <module>
+    from flipkart.config import Config
+ModuleNotFoundError: No module named 'flipkart'
+
+
+Solution:
+Need to conver flipkart into a package. We have to modify and run setup.py(run at cmd terminal: use uv pip install -e .) first so whatever folders we want are converted into packages.How to find folders that need to be converted into packages - using __init__.py files
+
+
+
+Sub error 1
+(prodrecbot) C:\ai_projects\ecommerce_product_recommender_chatbot_gcp>python flipkart\data_ingestion.py
+Traceback (most recent call last):
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\prodrecbot\Lib\site-packages\langchain_huggingface\embeddings\huggingface.py", line 68, in __init__
+    import sentence_transformers  # type: ignore[import]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'sentence_transformers'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\flipkart\data_ingestion.py", line 32, in <module>
+    ingestor = DataIngestor()
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\flipkart\data_ingestion.py", line 9, in __init__
+    self.embedding = HuggingFaceEmbeddings(model = Config.EMBEDDING_MODEL)
+                     ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\prodrecbot\Lib\site-packages\langchain_huggingface\embeddings\huggingface.py", line 74, in __init__
+    raise ImportError(msg) from exc
+ImportError: Could not import sentence_transformers python package. Please install it with `pip install sentence-transformers`.
+
+
+Solution:
+At cmd terminal,run below commnd
+
+uv pip install sentence-transformers
+
+
+
+Error 2
+Traceback (most recent call last):
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\flipkart\data_ingestion.py", line 33, in <module>
+    ingestor.ingest(load_existing=False)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\flipkart\data_ingestion.py", line 25, in ingest
+    docs = DataConverter("data\flipkart_headphones_reviews_dataset_full.csv").convert()
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\flipkart\data_converter.py", line 9, in convert
+    df =pd.read_csv(self.file_path)[["product_title","review"]]
+        ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\prodrecbot\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\prodrecbot\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\prodrecbot\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\prodrecbot\Lib\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ~~~~~~~~~~^
+        f,
+        ^^
+    ...<6 lines>...
+        storage_options=self.options.get("storage_options", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\prodrecbot\Lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+OSError: [Errno 22] Invalid argument: 'data\x0clipkart_headphones_reviews_dataset_full.csv'
+
+
+Solution:
+Replace backslash with forward slash in 'data\x0clipkart_headphones_reviews_dataset_full.csv' so it becomes 'data/flipkart_headphones_reviews_dataset_full.csv'
+
+
+
+Error 3
+Invalid schema name "flipkart_database"
+
+Solution: 
+In class DataIngestor, argument passed as parameter collection_name shouldn't have any special characters(/,_,etc) or spaces
