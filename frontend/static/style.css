@@ -1,18 +1,21 @@
 body, html {
     height: 100%;
     margin: 0;
-    background: linear-gradient(135deg, #004d40, #00796b, #26a69a);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Soft, neutral background that isn't distracting */
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #1e293b;
 }
 
 /* Main Card */
 .card {
     height: 90vh;
-    border-radius: 20px;
-    background: rgba(20, 30, 30, 0.95);
+    border-radius: 12px; /* Subtler radius for modern look */
+    background: #ffffff;
     backdrop-filter: blur(12px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
-    border: none;
+    /* Soft shadow to create depth without looking "heavy" */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -20,21 +23,23 @@ body, html {
 
 /* Header */
 .card-header {
-    background: linear-gradient(to right, #2e7d32, #43a047);
-    border: none;
-    padding: 1rem;
-    color: white;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    background: #ffffff;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 1.25rem;
+    color: #0f172a;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 
 .card-header .user_info span {
-    font-size: 1.3rem;
-    font-weight: bold;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .card-header .user_info p {
     font-size: 0.85rem;
+    color: #64748b;
     margin: 0;
 }
 
@@ -42,107 +47,114 @@ body, html {
 .msg_card_body {
     flex-grow: 1;
     overflow-y: auto;
-    padding: 1rem;
-    background: #0d1117;
+    padding: 1.5rem;
+    background: #ffffff;
     scrollbar-width: thin;
-    scrollbar-color: #43a047 transparent;
+    scrollbar-color: #cbd5e1 transparent;
 }
 
 .msg_card_body::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
 }
 .msg_card_body::-webkit-scrollbar-thumb {
-    background: #43a047;
-    border-radius: 3px;
+    background: #cbd5e1;
+    border-radius: 10px;
 }
 
 /* Footer */
 .card-footer {
-    border: none;
-    background: transparent;
-    padding: 0.8rem 1rem;
+    border-top: 1px solid #f1f5f9;
+    background: #ffffff;
+    padding: 1rem 1.25rem;
 }
 
 /* Input bar */
 .chat-input {
     display: flex;
     align-items: center;
-    background: #1c1f26;
-    border-radius: 30px;
-    padding: 0.3rem 0.6rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0.2rem 0.5rem;
+    transition: border-color 0.2s;
+}
+
+.chat-input:focus-within {
+    border-color: #3b82f6; /* Subtle brand blue focus */
 }
 
 .type_msg {
     flex-grow: 1;
     background: transparent;
     border: none;
-    color: #fff;
-    padding: 12px 15px;
-    font-size: 1rem;
+    color: #1e293b;
+    padding: 10px 12px;
+    font-size: 0.95rem;
     outline: none;
 }
 
 .type_msg::placeholder {
-    color: #aaa;
+    color: #94a3b8;
 }
 
 /* Send button */
 .send_btn {
-    background: linear-gradient(135deg, #00c853, #64dd17);
+    background: #3b82f6; /* Industry standard primary blue */
     border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    border-radius: 6px;
+    width: 38px;
+    height: 38px;
     margin-left: 8px;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    transition: all 0.3s ease;
+    transition: background 0.2s ease;
 }
 
 .send_btn:hover {
-    transform: scale(1.1);
-    background: linear-gradient(135deg, #00e676, #76ff03);
+    background: #2563eb;
+    transform: none; /* Removed scale for a cleaner professional feel */
 }
 
 /* Chat Bubbles */
 .msg_cotainer,
 .msg_cotainer_send {
-    max-width: 70%;
-    padding: 12px 16px;
-    border-radius: 20px;
+    max-width: 75%;
+    padding: 10px 14px;
+    border-radius: 12px;
     position: relative;
     word-wrap: break-word;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    font-size: 0.925rem;
+    line-height: 1.5;
+    box-shadow: none; /* Flat design is more modern */
 }
 
 .msg_cotainer {
-    background: #1e3d28;
-    color: #e8f5e9;
+    background: #f1f5f9; /* Soft grey for recipient */
+    color: #334155;
     margin-left: 10px;
+    border-bottom-left-radius: 2px;
 }
 
 .msg_cotainer_send {
-    background: #2e7d32;
+    background: #3b82f6; /* Primary blue for sender */
     color: #ffffff;
     margin-right: 10px;
     margin-left: auto;
+    border-bottom-right-radius: 2px;
 }
 
 /* Time */
 .msg_time,
 .msg_time_send {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     position: absolute;
-    bottom: -18px;
-    color: #aaa;
+    bottom: -20px;
+    color: #94a3b8;
+    font-weight: 500;
 }
 
 .msg_time { left: 0; }
@@ -151,31 +163,31 @@ body, html {
 /* Avatars */
 .user_img,
 .user_img_msg {
-    height: 45px;
-    width: 45px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
-    border: 2px solid #fff;
+    border: 1px solid #e2e8f0;
     object-fit: cover;
 }
 
 .img_cont {
     position: relative;
-    margin-right: 10px;
+    margin-right: 12px;
 }
 
 .online_icon {
     position: absolute;
-    height: 12px;
-    width: 12px;
-    background-color: #00e676;
+    height: 10px;
+    width: 10px;
+    background-color: #22c55e; /* Vibrant but clean green */
     border-radius: 50%;
-    bottom: 0;
-    right: 0;
+    bottom: 2px;
+    right: 2px;
     border: 2px solid white;
 }
 
 /* Responsive */
 @media (max-width: 576px) {
-    .card { height: 100vh; border-radius: 0; }
-    .msg_cotainer, .msg_cotainer_send { max-width: 85%; font-size: 0.9rem; }
+    .card { height: 100vh; border-radius: 0; border: none; }
+    .msg_cotainer, .msg_cotainer_send { max-width: 85%; }
 }

@@ -85,3 +85,162 @@ Invalid schema name "flipkart_database"
 
 Solution: 
 In class DataIngestor, argument passed as parameter collection_name shouldn't have any special characters(/,_,etc) or spaces
+
+
+Error 4
+C:\ai_projects\ecommerce_product_recommender_chatbot_gcp>python app.py
+Traceback (most recent call last):
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\app.py", line 14, in <module>
+    from flipkart.data_ingestion import DataIngestor
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\flipkart\data_ingestion.py", line 3, in <module>
+    from langchain_astradb import AstraDBVectorStore # required to access AstraDB Vector Store
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'langchain_astradb'
+
+
+Solution
+Need to activate virtual environment if it has deactivated (understood as same file ran before without throwing no module error)
+Run below commands on cmd terminal to reactivate virtual environment
+-->uv init
+-->prodrecbot\Scripts\activate (here prodrecbot is name of virtual environment that we created at the inception the project)
+
+
+Error 5
+(prodrecbot) C:\ai_projects\ecommerce_product_recommender_chatbot_gcp>python app.py
+[INFO] New chat thread created: 5e078f4f-2821-4805-a9e2-f2fe8bc85d52
+Traceback (most recent call last):
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\app.py", line 95, in <module>
+    app = create_app()
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\app.py", line 36, in create_app
+    vector_store = DataIngestor.ingest(load_existing=True)
+TypeError: DataIngestor.ingest() missing 1 required positional argument: 'self'
+
+Solution
+DataIngestor class had not been called. It needs to be called as DataIngestor()
+
+
+
+Error 6
+(prodrecbot) C:\ai_projects\ecommerce_product_recommender_chatbot_gcp>python app.py
+[INFO] New chat thread created: 38eaa5e5-eb20-454b-bc5a-c6cd382ba245
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████| 199/199 [00:00<00:00, 2096.02it/s, Materializing param=pooler.dense.weight]
+BertModel LOAD REPORT from: BAAI/bge-base-en-v1.5
+Key                     | Status     |  |
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  |
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.88.9:5000
+Press CTRL+C to quit
+ * Restarting with watchdog (windowsapi)
+[INFO] New chat thread created: a4b43f3d-4ab3-43d5-b33f-aa314d30273b
+Loading weights: 100%|███████████████████████████████████████████████████████████████████████████████████████| 199/199 [00:00<00:00, 627.47it/s, Materializing param=pooler.dense.weight]
+BertModel LOAD REPORT from: BAAI/bge-base-en-v1.5
+Key                     | Status     |  |
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  |
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+ * Debugger is active!
+ * Debugger PIN: 591-219-347
+127.0.0.1 - - [12/Feb/2026 21:25:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [12/Feb/2026 21:25:31] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [12/Feb/2026 21:25:31] "GET /favicon.ico HTTP/1.1" 404 -
+
+(prodrecbot) C:\ai_projects\ecommerce_product_recommender_chatbot_gcp>python app.py
+[INFO] New chat thread created: 4055bc84-5999-45bd-b169-ad1aa5eaaebe
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████| 199/199 [00:00<00:00, 2363.89it/s, Materializing param=pooler.dense.weight]
+BertModel LOAD REPORT from: BAAI/bge-base-en-v1.5
+Key                     | Status     |  |
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  |
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.88.9:5000
+Press CTRL+C to quit
+ * Restarting with watchdog (windowsapi)
+[INFO] New chat thread created: dbf5257e-cf10-4fa0-a6a6-9551f46a6fe7
+Loading weights: 100%|███████████████████████████████████████████████████████████████████████████████████████| 199/199 [00:00<00:00, 531.30it/s, Materializing param=pooler.dense.weight]
+BertModel LOAD REPORT from: BAAI/bge-base-en-v1.5
+Key                     | Status     |  |
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  |
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+ * Debugger is active!
+ * Debugger PIN: 591-219-347
+127.0.0.1 - - [12/Feb/2026 21:34:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [12/Feb/2026 21:34:08] "GET /static/style.css HTTP/1.1" 200 -
+ * Detected change in 'C:\\ai_projects\\ecommerce_product_recommender_chatbot_gcp\\prodrecbot\\Lib\\site-packages\\flask\\debughelpers.py', reloading
+ * Restarting with watchdog (windowsapi)
+[INFO] New chat thread created: c6282db3-b1e2-48b8-8fe7-21865f7965c2
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████████| 199/199 [00:00<00:00, 1383.34it/s, Materializing param=pooler.dense.weight]
+BertModel LOAD REPORT from: BAAI/bge-base-en-v1.5
+Key                     | Status     |  |
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  |
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+ * Debugger is active!
+ * Debugger PIN: 591-219-347
+ * Detected change in 'C:\\ai_projects\\ecommerce_product_recommender_chatbot_gcp\\prodrecbot\\Lib\\site-packages\\langchain_core\\messages\\block_translators\\langchain_v0.py', reloading
+ * Restarting with watchdog (windowsapi)
+[INFO] New chat thread created: 5572062c-c6cd-48d8-b54f-8c11c130af19
+Loading weights: 100%|███████████████████████████████████████████████████████████████████████████████████████| 199/199 [00:00<00:00, 471.26it/s, Materializing param=pooler.dense.weight]
+BertModel LOAD REPORT from: BAAI/bge-base-en-v1.5
+Key                     | Status     |  |
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  |
+
+Notes:
+- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+ * Debugger is active!
+ * Debugger PIN: 591-219-347
+127.0.0.1 - - [12/Feb/2026 21:39:08] "POST /get HTTP/1.1" 200 -
+ * Detected change in 'C:\\ai_projects\\ecommerce_product_recommender_chatbot_gcp\\prodrecbot\\Lib\\site-packages\\astrapy\\cursors.py', reloading
+ * Detected change in 'C:\\ai_projects\\ecommerce_product_recommender_chatbot_gcp\\prodrecbot\\Lib\\site-packages\\astrapy\\data\\cursors\\__init__.py', reloading
+ * Detected change in 'C:\\ai_projects\\ecommerce_product_recommender_chatbot_gcp\\prodrecbot\\Lib\\site-packages\\astrapy\\data\\cursors\\cursor.py', reloading
+ * Detected change in 'C:\\ai_projects\\ecommerce_product_recommender_chatbot_gcp\\prodrecbot\\Lib\\site-packages\\astrapy\\data\\cursors\\farr_cursor.py', reloading
+ * Detected change in 'C:\\ai_projects\\ecommerce_product_recommender_chatbot_gcp\\prodrecbot\\Lib\\site-packages\\astrapy\\data\\cursors\\pagination.py', reloading
+ * Detected change in 'C:\\ai_projects\\ecommerce_product_recommender_chatbot_gcp\\prodrecbot\\Lib\\site-packages\\astrapy\\data\\cursors\\query_engine.py', reloading
+ * Detected change in 'C:\\ai_projects\\ecommerce_product_recommender_chatbot_gcp\\prodrecbot\\Lib\\site-packages\\astrapy\\data\\cursors\\reranked_result.py', reloading
+ * Detected change in 'C:\\ai_projects\\ecommerce_product_recommender_chatbot_gcp\\prodrecbot\\Lib\\site-packages\\astrapy\\data\\cursors\\find_cursor.py', reloading
+Exception in thread Thread-4 (serve_forever):
+Traceback (most recent call last):
+  File "C:\Users\sambi\anaconda3\Lib\threading.py", line 1043, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Users\sambi\anaconda3\Lib\threading.py", line 994, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\ai_projects\ecommerce_product_recommender_chatbot_gcp\prodrecbot\Lib\site-packages\werkzeug\serving.py", line 819, in serve_forever
+    super().serve_forever(poll_interval=poll_interval)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sambi\anaconda3\Lib\socketserver.py", line 235, in serve_forever
+    ready = selector.select(poll_interval)
+  File "C:\Users\sambi\anaconda3\Lib\selectors.py", line 314, in select
+    r, w, _ = self._select(self._readers, self._writers, [], timeout)
+              ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sambi\anaconda3\Lib\selectors.py", line 305, in _select
+    r, w, x = select.select(r, w, w, timeout)
+              ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+OSError: [WinError 10038] An operation was attempted on something that is not a socket
+
+
+Solution:
+

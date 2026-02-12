@@ -51,7 +51,7 @@ class RAGAgentBuilder:
 
             """,
             # Below code is for maintaining memory and preserving context w.r.t chat history 
-            checkpointer = InMemorySaver,
+            checkpointer = InMemorySaver(),
             middleware=[
                 SummarizationMiddleware(
                 model = self.model,
