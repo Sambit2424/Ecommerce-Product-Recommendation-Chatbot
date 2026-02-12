@@ -1,3 +1,5 @@
+# This module initializes the AstraDB Vector Store, converts the csv file -->documents-->HuggingFaceEmbdeddings and stores them in AstraDB Vector store  
+
 from langchain_astradb import AstraDBVectorStore # required to access AstraDB Vector Store
 from langchain_huggingface import HuggingFaceEmbeddings # required to convert docs to embeddings
 # Modular coding being used in below lines
@@ -17,7 +19,7 @@ class DataIngestor:
             namespace = Config.ASTRA_DB_KEYSPACE
         )
 
-# load_exisiting parameter
+# load_exisiting parameter - if docs already exists just load that 
     def ingest(self,load_existing = True):
         if load_existing == True:
             return self.vstore

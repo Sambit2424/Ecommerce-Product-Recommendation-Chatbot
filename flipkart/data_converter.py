@@ -1,3 +1,5 @@
+# This module defines the class that will be used to convert the input csv file into langchain documents
+
 import pandas as pd
 from langchain_core.documents import Document
 
