@@ -1,0 +1,44 @@
+# yaml file is a kubernetes configuration file that we need to deploy our application
+# Here, we are making 2 things - 1) Flask application 2) Making a Service out of that application
+# When we have a lot of traffic for our application, that's when we make many replicas of kubernetes cluster
+# We'll have to write a line of code later on linux machine to configure secrets(variables in .env file) on cloud platform
+# Loadbalancer service is going to help us expose our application to public ports so we can accept public traffic
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+  labels:
+    app: flask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: flask-container
+        image: flask-app:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 5000
+        envFrom:
+          - secretRef:
+              name: llmops-secrets
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: flask
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
