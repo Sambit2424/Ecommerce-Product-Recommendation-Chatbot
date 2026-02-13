@@ -1,21 +1,22 @@
 body, html {
     height: 100%;
     margin: 0;
-    /* Soft, neutral background that isn't distracting */
-    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    color: #1e293b;
+    /* Soft, deep navy gradient for a premium feel */
+    background: radial-gradient(circle at top right, #1e293b, #0f172a);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Main Card */
 .card {
     height: 90vh;
-    border-radius: 12px; /* Subtler radius for modern look */
-    background: #ffffff;
-    backdrop-filter: blur(12px);
-    /* Soft shadow to create depth without looking "heavy" */
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    /* Subtle transparency (Glassmorphism) */
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    /* Soft glow shadow instead of flat black */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -23,23 +24,24 @@ body, html {
 
 /* Header */
 .card-header {
-    background: #ffffff;
-    border-bottom: 1px solid #f1f5f9;
+    /* Sophisticated dark header with a hint of border bottom */
+    background: rgba(15, 23, 42, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding: 1.25rem;
-    color: #0f172a;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    color: #f8fafc;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .card-header .user_info span {
     font-size: 1.1rem;
     font-weight: 600;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.5px;
 }
 
 .card-header .user_info p {
-    font-size: 0.85rem;
-    color: #64748b;
+    font-size: 0.8rem;
+    opacity: 0.7;
     margin: 0;
 }
 
@@ -48,23 +50,23 @@ body, html {
     flex-grow: 1;
     overflow-y: auto;
     padding: 1.5rem;
-    background: #ffffff;
+    background: transparent; /* Maintains the glass effect */
     scrollbar-width: thin;
-    scrollbar-color: #cbd5e1 transparent;
+    scrollbar-color: #6366f1 transparent;
 }
 
 .msg_card_body::-webkit-scrollbar {
     width: 5px;
 }
 .msg_card_body::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
+    background: #6366f1; /* Indigo scrollbar */
     border-radius: 10px;
 }
 
 /* Footer */
 .card-footer {
-    border-top: 1px solid #f1f5f9;
-    background: #ffffff;
+    border: none;
+    background: rgba(15, 23, 42, 0.4);
     padding: 1rem 1.25rem;
 }
 
@@ -72,22 +74,23 @@ body, html {
 .chat-input {
     display: flex;
     align-items: center;
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 0.2rem 0.5rem;
-    transition: border-color 0.2s;
+    background: #334155;
+    border-radius: 12px;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
 }
 
 .chat-input:focus-within {
-    border-color: #3b82f6; /* Subtle brand blue focus */
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 .type_msg {
     flex-grow: 1;
     background: transparent;
     border: none;
-    color: #1e293b;
+    color: #f8fafc;
     padding: 10px 12px;
     font-size: 0.95rem;
     outline: none;
@@ -99,52 +102,51 @@ body, html {
 
 /* Send button */
 .send_btn {
-    background: #3b82f6; /* Industry standard primary blue */
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
     border: none;
-    border-radius: 6px;
-    width: 38px;
-    height: 38px;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
     margin-left: 8px;
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .send_btn:hover {
-    background: #2563eb;
-    transform: none; /* Removed scale for a cleaner professional feel */
+    filter: brightness(1.1);
+    transform: translateY(-1px);
 }
 
 /* Chat Bubbles */
 .msg_cotainer,
 .msg_cotainer_send {
     max-width: 75%;
-    padding: 10px 14px;
-    border-radius: 12px;
+    padding: 12px 16px;
+    border-radius: 16px;
     position: relative;
     word-wrap: break-word;
-    font-size: 0.925rem;
+    font-size: 0.95rem;
     line-height: 1.5;
-    box-shadow: none; /* Flat design is more modern */
 }
 
 .msg_cotainer {
-    background: #f1f5f9; /* Soft grey for recipient */
-    color: #334155;
+    background: #334155; /* Slate bubble for recipient */
+    color: #f1f5f9;
     margin-left: 10px;
-    border-bottom-left-radius: 2px;
+    border-bottom-left-radius: 4px;
 }
 
 .msg_cotainer_send {
-    background: #3b82f6; /* Primary blue for sender */
+    background: #6366f1; /* Indigo bubble for sender */
     color: #ffffff;
     margin-right: 10px;
     margin-left: auto;
-    border-bottom-right-radius: 2px;
+    border-bottom-right-radius: 4px;
 }
 
 /* Time */
@@ -153,8 +155,7 @@ body, html {
     font-size: 0.7rem;
     position: absolute;
     bottom: -20px;
-    color: #94a3b8;
-    font-weight: 500;
+    color: #64748b;
 }
 
 .msg_time { left: 0; }
@@ -165,8 +166,8 @@ body, html {
 .user_img_msg {
     height: 40px;
     width: 40px;
-    border-radius: 50%;
-    border: 1px solid #e2e8f0;
+    border-radius: 10px; /* Modern "squircle" look */
+    border: 1px solid rgba(255, 255, 255, 0.2);
     object-fit: cover;
 }
 
@@ -179,15 +180,15 @@ body, html {
     position: absolute;
     height: 10px;
     width: 10px;
-    background-color: #22c55e; /* Vibrant but clean green */
+    background-color: #10b981; /* Emeral green status */
     border-radius: 50%;
-    bottom: 2px;
-    right: 2px;
-    border: 2px solid white;
+    bottom: -2px;
+    right: -2px;
+    border: 2px solid #1e293b;
 }
 
 /* Responsive */
 @media (max-width: 576px) {
-    .card { height: 100vh; border-radius: 0; border: none; }
+    .card { height: 100vh; border-radius: 0; }
     .msg_cotainer, .msg_cotainer_send { max-width: 85%; }
 }
