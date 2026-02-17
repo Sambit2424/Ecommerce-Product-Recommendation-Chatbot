@@ -1,0 +1,40 @@
+# Here as well, we are creating 2 applications(APIs to be more accurate). One is for Deployment of Grafana
+# Second one is for the service of the deployment. Grafana is a cloud platform that will help us to monitor
+# our application. Container is built using grafana/grafana image from Dockerhub
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana  
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+        - name: grafana
+          image: grafana/grafana
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-service
+  namespace: monitoring
+spec:
+  selector:
+    app: grafana
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 32000  
+  type: NodePort

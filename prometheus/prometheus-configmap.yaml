@@ -1,0 +1,24 @@
+# We're making a configuration mapping for the prometheus deployment file
+# We're making a job here that monitors the metrics of flask app
+# Flask application is available on 5000 port and the ip address before that is the link to google cloud machine
+
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: monitoring
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+
+    scrape_configs:
+      - job_name: 'prometheus'
+        static_configs:
+          - targets: ['localhost:9090']
+
+      - job_name: 'flask-app'
+        metrics_path: /metrics
+        static_configs:
+          - targets: ['34.132.25.27:5000']
