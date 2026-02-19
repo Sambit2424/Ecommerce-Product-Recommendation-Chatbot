@@ -24,7 +24,7 @@ Let's Go
     - Preset: `Standard`
     - Memory: `16 GB RAM`
   - Boot Disk:
-    - Change size to `256 GB`
+    - Change size to `150 GB`
     - Image: Select **Ubuntu 24.04 LTS**
   - Networking:
     - Enable HTTP and HTTPS traffic
@@ -137,8 +137,8 @@ Let's Go
 ### 4. Interlink your Github on VSCode and on VM
 
 ```bash
-git config --global user.email "gyrogodnon@gmail.com"
-git config --global user.name "data-guru0"
+git config --global user.email "sambit.nayak2424@gmail.com"
+git config --global user.name "Sambit2424"
 
 git add .
 git commit -m "commit"
@@ -146,7 +146,7 @@ git push origin main
 ```
 
 - When prompted:
-  - **Username**: `data-guru0`
+  - **Username**: `Sambit2424`
   - **Password**: GitHub token (paste, it's invisible)
 
 ---
