@@ -1,3 +1,6 @@
+# Here as well, We are creating 2 applications(APIs to be more accurate). One is for Deployment of Prometheus
+# Second one is for the service of the deployment.
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
