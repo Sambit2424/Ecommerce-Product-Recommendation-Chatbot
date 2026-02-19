@@ -33,7 +33,7 @@ ImportError: Could not import sentence_transformers python package. Please insta
 
 
 Solution:
-At cmd terminal,run below commnd
+At cmd terminal,run below command
 
 uv pip install sentence-transformers
 
@@ -242,5 +242,5 @@ Traceback (most recent call last):
 OSError: [WinError 10038] An operation was attempted on something that is not a socket
 
 
-Solution:
+Solution: Just a timeout error, solved when we fired prompt again. Generally better to fire prompt and wait for an answer before firing prompt again
 
