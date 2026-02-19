@@ -1,4 +1,4 @@
-# Here as well, we are creating 2 applications(APIs to be more accurate). One is for Deployment of Grafana
+# We are creating 2 applications(APIs to be more accurate). One is for Deployment of Grafana
 # Second one is for the service of the deployment. Grafana is a cloud platform that will help us to monitor
 # our application. Container is built using grafana/grafana image from Dockerhub
 
