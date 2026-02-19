@@ -244,3 +244,51 @@ OSError: [WinError 10038] An operation was attempted on something that is not a 
 
 Solution: Just a timeout error, solved when we fired prompt again. Generally better to fire prompt and wait for an answer before firing prompt again
 
+
+Error 7 (Faced on GCP VM While Deploying using Kubernetes)
+iammason9@instance-20260218-141033:~/Ecommerce-Product-Recommendation-Chatbot$ kubectl logs flask-app-577dbb79b9-rwd6f
+[INFO] New chat thread created: 69d23f49-e07f-4d96-b0a1-e5cf73085435
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 68, in __init__
+    import sentence_transformers  # type: ignore[import]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'sentence_transformers'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/app.py", line 95, in <module>
+    app = create_app()
+          ^^^^^^^^^^^^
+  File "/app/app.py", line 36, in create_app
+    vector_store = DataIngestor().ingest(load_existing=True)
+                   ^^^^^^^^^^^^^^
+  File "/app/flipkart/data_ingestion.py", line 11, in __init__
+    self.embedding = HuggingFaceEmbeddings(model = Config.EMBEDDING_MODEL)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 74, in __init__
+    raise ImportError(msg) from exc
+ImportError: Could not import sentence_transformers python package. Please install it with `pip install sentence-transformers`.
+
+
+Solution:
+It looks like your Docker image is missing a critical dependency: sentence-transformers.
+Even though you are using langchain-huggingface, that library requires sentence-transformers to be installed separately to handle the actual embedding math.
+To fix this, you need to update your environment and rebuild your image:
+1. Update Dependencies
+Add the missing package to your requirements.txt file:
+text
+sentence-transformers == required_version
+
+(Or, if you are using pyproject.toml, add it to the dependencies list.)
+2. Rebuild the Docker Image
+Since you've modified the requirements, you need a new image. Run your build command again:
+bash
+docker build -t flask-app:latest .
+
+
+3. Update the Kubernetes Deployment
+If you are using a local registry or the same tag (latest), Kubernetes might not realize the image has changed. You can force the pod to restart with the new image using:
+bash
+kubectl rollout restart deployment flask-app
+

@@ -193,6 +193,7 @@ kubectl create namespace monitoring
 
 kubectl get ns
 
+## Run below commands one by one after going inside project directory using cd
 
 kubectl apply -f prometheus/prometheus-configmap.yaml
 
@@ -204,7 +205,7 @@ kubectl apply -f grafana/grafana-deployment.yaml
 
 kubectl get pods -n monitoring
 
-## Check target health also..
+## Once all pods are running, Check target health also..
 ## On IP:9090
 kubectl port-forward --address 0.0.0.0 svc/prometheus-service -n monitoring 9090:9090
 
