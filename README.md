@@ -3,8 +3,11 @@ Let's Go
 ---
 
 ---
-
+Here is the techstack that I used to build the project
 ![Project_Name_Tools_Used](https://github.com/Sambit2424/Ecommerce-Product-Recommendation-Chatbot/blob/main/project_snapshots/project_overview_image.png)
+
+Here is a snapshot of the chatbot at work
+![Chatbot_at_work](https://github.com/Sambit2424/Ecommerce-Product-Recommendation-Chatbot/blob/main/project_snapshots/chatbot_at_work.png)
 
 ### 1. Initial Setup
 
