@@ -4,6 +4,8 @@ Let's Go
 
 ---
 
+![Project_Name_Tools_Used](https://github.com/Sambit2424/Ecommerce-Product-Recommendation-Chatbot/blob/main/project_snapshots/project_overview_image.png)
+
 ### 1. Initial Setup
 
 - **Push code to GitHub**  
